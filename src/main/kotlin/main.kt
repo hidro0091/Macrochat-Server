@@ -26,7 +26,7 @@ fun messageStr(msg: Message): String {
     return "${convertLongToTime(msg.time)}  ${msg.username}: ${msg.contents}"
 }
 
-var messages = mutableListOf<Message>(Message("g", 32, "e"))
+var messages = mutableListOf(Message("g", 32, "e"))
 
 fun constructBlock(): String {
     var block = ""
@@ -36,7 +36,7 @@ fun constructBlock(): String {
     return block
 }
 
-fun main(args: Array<String>) {
+fun main() {
     embeddedServer(Netty, 8080) {
         install(WebSockets) {
             pingPeriod = 15.seconds

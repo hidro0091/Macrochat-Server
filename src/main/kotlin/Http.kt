@@ -4,7 +4,6 @@ import io.ktor.server.application.*
 import io.ktor.http.*
 import io.ktor.http.content.*
 import io.ktor.server.plugins.cachingheaders.*
-import io.ktor.server.response.*
 import io.ktor.server.plugins.cors.routing.*
 import com.asyncapi.kotlinasyncapi.ktor.AsyncApiPlugin
 import com.asyncapi.kotlinasyncapi.context.service.AsyncApiExtension
@@ -23,7 +22,7 @@ import io.ktor.server.websocket.timeout
 
 fun Application.configureHttp() {
     install(CachingHeaders) {
-        options { call, outgoingContent ->
+        options { _, outgoingContent ->
             when (outgoingContent.contentType?.withoutParameters()) {
                 ContentType.Text.CSS -> CachingOptions(CacheControl.MaxAge(maxAgeSeconds = 24 * 60 * 60))
                 else -> null
