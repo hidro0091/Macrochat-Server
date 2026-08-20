@@ -26,7 +26,7 @@ fun messageStr(msg: Message): String {
     return "${convertLongToTime(msg.time)}  ${msg.username}: ${msg.contents}"
 }
 
-var messages = mutableListOf(Message("g", 32, "e"))
+var messages = mutableListOf<Message>()
 
 fun constructBlock(): String {
     var block = ""
